@@ -1,0 +1,109 @@
+<!-- templates/index.html -->
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Parking — Advanced System</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="background-animation"></div>
+  
+  <nav class="navbar">
+    <div class="nav-brand">
+      <span class="logo">🅿️</span>
+      <h1>Smart Parking System</h1>
+    </div>
+    <div class="nav-stats">
+      <div class="stat-card">
+        <span class="stat-label">Weather</span>
+        <span class="stat-value" id="weatherInfo">Loading...</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Total Slots</span>
+        <span class="stat-value" id="totalSlots">20</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Available</span>
+        <span class="stat-value stat-success" id="availableSlots">-</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Queue</span>
+        <span class="stat-value stat-warning" id="queueCount">0</span>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- Control Panel -->
+    <section class="control-panel">
+      <div class="panel-card">
+        <h2>🚗 Park Vehicle</h2>
+        <div class="input-group">
+          <input id="plate" placeholder="Vehicle Number (Optional - Auto-generated)" class="modern-input" />
+          <button id="parkBtn" class="btn btn-primary">
+            <span class="btn-icon">➕</span> Park Vehicle
+          </button>
+        </div>
+        <p class="hint">Leave empty for auto-generated vehicle number</p>
+      </div>
+
+      <div class="panel-card">
+        <h2>🚙 Remove Vehicle</h2>
+        <div class="input-group">
+          <input id="removeSlot" placeholder="Slot Number" type="number" min="1" max="20" class="modern-input" />
+          <button id="removeBtn" class="btn btn-danger">
+            <span class="btn-icon">➖</span> Remove Vehicle
+          </button>
+        </div>
+        <p class="hint">Click on a slot below to auto-fill slot number</p>
+      </div>
+
+      <div class="panel-card actions">
+        <h2>⚙️ Actions</h2>
+        <div class="button-group">
+          <button id="undoBtn" class="btn btn-secondary">
+            <span class="btn-icon">↩️</span> Undo
+          </button>
+          <button id="redoBtn" class="btn btn-secondary">
+            <span class="btn-icon">↪️</span> Redo
+          </button>
+          <button id="statusBtn" class="btn btn-info">
+            <span class="btn-icon">🔄</span> Refresh
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Parking Grid -->
+    <section class="parking-section">
+      <h2 class="section-title">🅿️ Parking Grid</h2>
+      <div id="grid" class="grid"></div>
+    </section>
+
+    <!-- BST Visualization - Removed as per user request -->
+  </main>
+
+  <!-- Notifications -->
+  <div id="notifications" class="notifications"></div>
+
+  <!-- Chatbot floating button -->
+  <div id="chatBtn" title="Ask Assistant" class="floating-chat-btn">
+    <span class="chat-icon">💬</span>
+  </div>
+  <div id="chatPopup" class="hidden chat-popup">
+    <div id="chatHeader" class="chat-header">
+      <span>🤖 Parking Assistant</span>
+      <span id="closeChat" class="close-btn">✕</span>
+    </div>
+    <div id="chatLog" class="chat-log"></div>
+    <div class="chat-input-container">
+      <input id="chatIn" placeholder="Ask about parking, slots, queue..." class="chat-input" />
+      <button id="chatSend" class="btn btn-primary btn-small">Send</button>
+    </div>
+  </div>
+
+  <script src="/static/scripts/main.js"></script>
+</body>
+</html>
